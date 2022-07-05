@@ -1,0 +1,28 @@
+.btn {
+  &White {
+    width: 162px;
+    padding: 5px;
+    background-color: #fff;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    transition: background-color 0.2s;
+    &:hover {
+      background: #e6e6e6;
+    }
+  }
+  &Like {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 1%;
+    right: 2%;
+  }
+}

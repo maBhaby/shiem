@@ -1,0 +1,25 @@
+.banner {
+  margin-top: 46px;
+  &List {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      'a a b b'
+      'a a c c';
+    height: 50%;
+  }
+  &Item {
+    justify-self: end;
+    &Box1 {
+      grid-area: a;
+    }
+    &Box2 {
+      grid-area: b;
+    }
+    &Box3 {
+      grid-area: c;
+    }
+  }
+}
