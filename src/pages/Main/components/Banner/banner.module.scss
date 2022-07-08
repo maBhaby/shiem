@@ -2,24 +2,13 @@
   margin-top: 46px;
   &List {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-      'a a b b'
-      'a a c c';
-    height: 50%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 20px;
   }
   &Item {
-    justify-self: end;
-    &Box1 {
-      grid-area: a;
-    }
-    &Box2 {
-      grid-area: b;
-    }
-    &Box3 {
-      grid-area: c;
+    &:nth-child(1) {
+      grid-column: 2 span;
+      grid-row: 2 span;
     }
   }
 }

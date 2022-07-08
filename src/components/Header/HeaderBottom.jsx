@@ -1,19 +1,23 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useAuth } from '../../hooks/useAuth';
+import { getAuth } from 'firebase/auth';
 
 import logo from '../../assets/img/Header/Logo.svg';
 import cart from '../../assets/img/Header/Cart.svg';
 import favorite from '../../assets/img/Header/favorite.svg';
 import search from '../../assets/img/Header/search.svg';
-import user from '../../assets/img/Header/user.svg';
+import userLogo from '../../assets/img/Header/user.svg';
 import style from './header.module.scss';
+import { useEffect } from 'react';
 
-const HeaderBottom = () => {
-  const [activePopUp, setActivePopUp] = useState(false);
+const HeaderBottom = ({ setActivePopUp, activePopUp }) => {
+  const auth = getAuth();
+  const user = auth.currentUser;
 
   const renderPopUp = () => {
     setActivePopUp(true);
   };
+
   return (
     <div className={style.headerBottom}>
       <Link to="/">
@@ -22,14 +26,14 @@ const HeaderBottom = () => {
       <nav className={style.headerBottomNavClother}>
         <ul className={[style.navList, style.navListBottom].join(' ')}>
           <li>
-            <a className={['link-reset']} href="#sd">
+            <Link to="catalog" className={['link-reset']} href="#sd">
               Женщины
-            </a>
+            </Link>
           </li>
           <li>
-            <a className={['link-reset']} href="#sd">
+            <Link to="catalog" className={['link-reset']} href="#sd">
               Мужчины
-            </a>
+            </Link>
           </li>
           <li>
             <a className={['link-reset']} href="#sd">
@@ -57,13 +61,23 @@ const HeaderBottom = () => {
             </a>
           </li>
           <li>
-            <a
-              onClick={renderPopUp}
-              className={['link-reset', style.navListBottomlink].join(' ')}
-              href="#sd">
-              <img width={20} height={20} src={user} alt="icon" />
-              Войти
-            </a>
+            {user ? (
+              <Link
+                to={'/profile'}
+                className={['link-reset', style.navListBottomlink].join(' ')}
+                href="#sd">
+                <img width={20} height={20} src={userLogo} alt="icon" />
+                Профиль
+              </Link>
+            ) : (
+              <a
+                onClick={renderPopUp}
+                className={['link-reset', style.navListBottomlink].join(' ')}
+                href="#sd">
+                <img width={20} height={20} src={userLogo} alt="icon" />
+                Войти
+              </a>
+            )}
           </li>
           <li>
             <Link className={['link-reset', style.navListBottomlink].join(' ')} to="/favorite">

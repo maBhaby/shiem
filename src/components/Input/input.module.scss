@@ -1,0 +1,42 @@
+.input {
+  outline: none;
+  border: 1px solid #d3d3d3;
+  height: 48px;
+  width: 100%;
+  padding: 0 45px 0 18px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  transition: 0.2s;
+  &Name {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    position: relative;
+    display: inline-block;
+    padding: 10px 0;
+    &::after {
+      content: '*';
+      position: absolute;
+      right: -8px;
+      color: #ff0000;
+    }
+  }
+  &:focus {
+    border: 1px solid #222222;
+  }
+  &Password {
+  }
+  &Error {
+    border: 1px solid #ff0000;
+  }
+  &Wrap {
+    position: relative;
+  }
+  &Btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

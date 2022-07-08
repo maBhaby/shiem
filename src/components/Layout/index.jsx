@@ -5,6 +5,8 @@ import Main from '../../pages/Main';
 import Favorite from '../../pages/Favorite/Favorite';
 import NotFoundPage from '../../pages/NotFoundPage';
 import Footer from '../Footer';
+import Profile from '../../pages/Profile';
+import Catalog from '../../pages/Catalog';
 
 const Layout = () => {
   return (
@@ -16,6 +18,8 @@ const Layout = () => {
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route path="favorite" element={<Favorite />}></Route>
+            <Route path="profile" element={<Profile />}></Route>
+            <Route path="catalog" element={<NotFoundPage />}></Route>
             <Route path="*" element={<NotFoundPage />}></Route>
           </Routes>
         </div>
