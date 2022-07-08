@@ -14,15 +14,13 @@ const Layout = () => {
       <Header />
       <h1 className="visually-hidden">магазин одежды</h1>
       <main className="main ">
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<Main />}></Route>
-            <Route path="favorite" element={<Favorite />}></Route>
-            <Route path="profile" element={<Profile />}></Route>
-            <Route path="catalog" element={<NotFoundPage />}></Route>
-            <Route path="*" element={<NotFoundPage />}></Route>
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Main />}></Route>
+          <Route path="favorite" element={<Favorite />}></Route>
+          <Route path="profile" element={<Profile />}></Route>
+          <Route path="catalog" element={<Catalog />}></Route>
+          <Route path="*" element={<NotFoundPage />}></Route>
+        </Routes>
         <Footer />
       </main>
     </>

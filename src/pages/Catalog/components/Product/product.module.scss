@@ -1,0 +1,13 @@
+.product {
+  &List {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px 20px;
+  }
+  &Item {
+    position: relative;
+  }
+  &Sale {
+    color: #ff0000;
+  }
+}

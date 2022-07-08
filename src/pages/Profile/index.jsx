@@ -2,6 +2,8 @@ import React, { useEffect, useCallback } from 'react';
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
+import style from './profile.module.scss';
+
 const Profile = () => {
   const navigate = useNavigate();
 
@@ -18,7 +20,13 @@ const Profile = () => {
       });
   };
 
-  return <button onClick={handelClick}>выйти из профиля</button>;
+  return (
+    <div className="container">
+      <h1 className="visually-hidden">Личный кабинет</h1>
+      <div className={style.profileWrap}></div>
+      <button onClick={handelClick}>выйти из профиля</button>
+    </div>
+  );
 };
 
 export default Profile;

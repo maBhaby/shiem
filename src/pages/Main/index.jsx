@@ -35,7 +35,7 @@ const Main = () => {
   ];
 
   return (
-    <>
+    <div className="container">
       <Banner></Banner>
       <SliderLoop title={'Актуальное'} slide={[...actual]}></SliderLoop>
       <SaleOnHlopk></SaleOnHlopk>
@@ -45,7 +45,7 @@ const Main = () => {
       <SliderLoop title={'Бренды'} slide={[...brand]}></SliderLoop>
       <SaleMobile />
       <Advantages></Advantages>
-    </>
+    </div>
   );
 };
 export default Main;
