@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from '../input.module.scss';
 
-const Castom = ({ value, inputName, type, handelChange, labelName }) => {
+const Castom = ({ value, inputName, type, handelChange, labelName, errorMessage }) => {
   return (
-    <label>
+    <label className={style.inputWrap}>
       <span className={style.inputName}>{labelName}</span>
       <input
-        className={[style.input]}
+        className={[style.input, !!errorMessage && style.inputError].join(' ')}
         type={type}
         onChange={handelChange}
         name={inputName}

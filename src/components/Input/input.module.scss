@@ -8,13 +8,14 @@
   font-size: 14px;
   line-height: 16px;
   transition: 0.2s;
+
   &Name {
     font-weight: 400;
     font-size: 13px;
     line-height: 15px;
     position: relative;
     display: inline-block;
-    padding: 10px 0;
+    padding: 20px 0 10px 0;
     &::after {
       content: '*';
       position: absolute;
@@ -29,6 +30,8 @@
   }
   &Error {
     border: 1px solid #ff0000;
+    &Message {
+    }
   }
   &Wrap {
     position: relative;
@@ -36,7 +39,6 @@
   &Btn {
     position: absolute;
     right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 12px;
   }
 }

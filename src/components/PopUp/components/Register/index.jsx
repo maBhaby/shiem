@@ -1,33 +1,51 @@
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
 
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../../../../firebase';
 
-import Castom from '../../Input/Castom';
-import Password from '../../Input/Password';
-import ButtonAdd from '../../Button/ButtonAdd';
-import style from '../popup.module.scss';
-import Radio from '../../Input/Radio';
+import Castom from '../../../Input/Castom';
+import Password from '../../../Input/Password';
+import ButtonAdd from '../../../Button/ButtonAdd';
+import style from '../../popup.module.scss';
+import Radio from '../../../Input/Radio';
 
 const Register = () => {
-  const dispatch = useDispatch();
+  const writeToStore = async (userId, email, lastName, city, userName) => {
+    console.log(city, lastName, email, userId, userName);
 
-  const handelRegister = (email, password) => {
+    const docRef = await addDoc(collection(db, 'users'), {
+      id: userId,
+      email: email,
+      lastName: lastName,
+      city: city,
+      userName: userName,
+    })
+      .then((docRef) => {
+        console.log('Document written with ID: ', docRef.id);
+      })
+      .catch((e) => {
+        console.error('Error adding document: ', e);
+      });
+  };
+
+  const handelClickRegister = (email, password, city, lastName, userName) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // console.log(userCredential);
+        writeToStore(userCredential.user.uid, email, lastName, city, userName);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
       });
   };
 
   const formik = useFormik({
     initialValues: {
       userName: '',
-      userLastName: '',
+      lastName: '',
       city: '',
       email: '',
       password: '',
@@ -52,9 +70,9 @@ const Register = () => {
         <Castom
           labelName={'Фамилия'}
           type={'text'}
-          inputName={'userLastName'}
+          inputName={'lastName'}
           handelChange={formik.handleChange}
-          value={formik.values.userLastName}
+          value={formik.values.lastName}
         />
         <Castom
           labelName={'Город'}
@@ -79,7 +97,15 @@ const Register = () => {
           value={formik.values.password}
         />
         <ButtonAdd
-          handelClick={() => handelRegister(formik.values.email, formik.values.password)}
+          handelClick={() =>
+            handelClickRegister(
+              formik.values.email,
+              formik.values.password,
+              formik.values.city,
+              formik.values.lastName,
+              formik.values.userName,
+            )
+          }
           active={true}
           typeBtn={'submit'}
           title={'Зарегестрироваться'}
