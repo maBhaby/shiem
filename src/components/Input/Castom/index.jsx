@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { ErrorMessage, useField } from 'formik';
 import style from '../input.module.scss';
 
-const Castom = ({ value, inputName, type, handelChange, labelName, errorMessage }) => {
+const Castom = ({ labelName, ...props }) => {
+  const [activeLabelName, setActiveLabelName] = useState(false);
+  const [field, meta] = useField(props);
+
+  useEffect(() => {
+    setActiveLabelName(true);
+  }, [labelName]);
+
   return (
-    <label className={style.inputWrap}>
-      <span className={style.inputName}>{labelName}</span>
-      <input
-        className={[style.input, !!errorMessage && style.inputError].join(' ')}
-        type={type}
-        onChange={handelChange}
-        name={inputName}
-        value={value}
-      />
+    <label>
+      <p className={style.inputName}>
+        {labelName}
+        <span className={style.inputNameRequaer}>*</span>
+      </p>
+      <div className={style.inputWrap}>
+        <input
+          className={[style.input, meta.error && meta.touched && style.inputError].join(' ')}
+          id={field.name}
+          {...props}
+          {...field}
+        />
+        <ErrorMessage
+          component={'div'}
+          name={field.name}
+          className={style.inputErrorMessage}></ErrorMessage>
+      </div>
     </label>
   );
 };

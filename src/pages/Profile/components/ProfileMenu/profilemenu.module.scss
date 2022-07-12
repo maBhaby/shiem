@@ -1,0 +1,19 @@
+.profilemenu {
+  &List {
+  }
+  &Item {
+    &:not(:last-child) {
+      margin-bottom: 13px;
+    }
+  }
+  &Btn {
+    &Active {
+      color: #a27860;
+    }
+    &Exit {
+      font-size: 14px;
+      line-height: 150%;
+      color: #757575;
+    }
+  }
+}

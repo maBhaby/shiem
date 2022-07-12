@@ -7,7 +7,9 @@
   align-items: center;
   justify-content: center;
   z-index: 99;
-
+  &Form {
+    margin-bottom: 20px;
+  }
   &Wrap {
     width: 100%;
     max-width: 500px;

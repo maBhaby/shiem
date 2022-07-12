@@ -5,31 +5,33 @@ const PersonalData = ({ userDate }) => {
 
   console.log(userDate);
   return (
-    <div>
-      <h2>Персональные данные</h2>
-      <span>Учётные данные</span>
-      <ul>
-        <li>
-          <h3>Имя</h3>
-          <p>{userName}</p>
-        </li>
-        <li>
-          <h3>Фамилия</h3>
-          <p>{lastName}</p>
-        </li>
-        <li>
-          <h3>E-mail</h3>
-          <p>{email}</p>
-        </li>
-        <li>
-          <h3>Город</h3>
-          <p>{city}</p>
-        </li>
-        <li>
-          <h3>Гендер</h3>
-          <p>{gender}</p>
-        </li>
-      </ul>
+    <div className={style.personalData}>
+      <h2 className={style.personalDataTitle}>Персональные данные</h2>
+      <div className={style.personalDataWrap}>
+        <span className={style.personalDataSubtitle}>Учётные данные</span>
+        <ul className={style.personalDataList}>
+          <li className={style.personalDataItem}>
+            <h3 className={style.personalDataItemLogo}>Имя</h3>
+            <p className={style.personalDataItemText}>{userName}</p>
+          </li>
+          <li className={style.personalDataItem}>
+            <h3 className={style.personalDataItemLogo}>Фамилия</h3>
+            <p className={style.personalDataItemText}>{lastName}</p>
+          </li>
+          <li className={style.personalDataItem}>
+            <h3 className={style.personalDataItemLogo}>E-mail</h3>
+            <p className={style.personalDataItemText}>{email}</p>
+          </li>
+          <li className={style.personalDataItem}>
+            <h3 className={style.personalDataItemLogo}>Город</h3>
+            <p className={style.personalDataItemText}>{city}</p>
+          </li>
+          <li className={style.personalDataItem}>
+            <h3 className={style.personalDataItemLogo}>Гендер</h3>
+            <p className={style.personalDataItemText}>{gender}</p>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

@@ -14,12 +14,9 @@
     font-size: 13px;
     line-height: 15px;
     position: relative;
-    display: inline-block;
     padding: 20px 0 10px 0;
-    &::after {
-      content: '*';
-      position: absolute;
-      right: -8px;
+    &Requaer {
+      margin-left: 2px;
       color: #ff0000;
     }
   }
@@ -31,6 +28,13 @@
   &Error {
     border: 1px solid #ff0000;
     &Message {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: #ff0000;
+      position: absolute;
+      bottom: -15px;
+      left: 0;
     }
   }
   &Wrap {

@@ -5,10 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase';
 
 import style from './profile.module.scss';
+import Circle from '../../components/Loading/Circle';
 import PersonalData from './components/PersonalData';
 import ProfileMenu from './components/ProfileMenu';
 
 const Profile = () => {
+  const [loading, setLoading] = useState(true);
   const [userDate, setUserData] = useState({});
   const navigate = useNavigate();
 
@@ -24,8 +26,10 @@ const Profile = () => {
         setUserData((prev) => (prev = docUserData));
       }
     });
+    setLoading(false);
   };
   useEffect(() => {
+    setLoading(true);
     checkUserData();
   }, []);
 
@@ -43,13 +47,19 @@ const Profile = () => {
   };
 
   return (
-    <div className="container">
-      <h1 className="visually-hidden">Личный кабинет</h1>
-      <div className={style.profileWrap}>
-        <ProfileMenu clickOnExit={handelClick} />
-        <PersonalData userDate={userDate} />
-      </div>
-    </div>
+    <>
+      {loading ? (
+        <Circle />
+      ) : (
+        <div className="container">
+          <h1 className="visually-hidden">Личный кабинет</h1>
+          <div className={style.profileWrap}>
+            <ProfileMenu clickOnExit={handelClick} />
+            <PersonalData userDate={userDate} />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

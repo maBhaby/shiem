@@ -13,7 +13,7 @@ const Layout = () => {
     <>
       <Header />
       <h1 className="visually-hidden">магазин одежды</h1>
-      <main className="main ">
+      <main className="main">
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="favorite" element={<Favorite />}></Route>

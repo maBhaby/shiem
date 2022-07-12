@@ -2,11 +2,20 @@ import { useState } from 'react';
 
 import SingUp from './components/SingUp';
 import Register from './components/Register';
+import Test from './components/Register';
 import ButtonAdd from '../Button/ButtonAdd';
 import style from './popup.module.scss';
 
 const Popup = ({ setActivePopUp }) => {
   const [showRegister, setShowRegister] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const renderError = (message) => {
+    setErrorMessage(message);
+    setTimeout(() => {
+      setErrorMessage('');
+    }, 3000);
+  };
 
   const clickRegist = () => {
     setShowRegister(!showRegister);
@@ -29,12 +38,18 @@ const Popup = ({ setActivePopUp }) => {
             <path d="M4 20L20 4" stroke="#222222" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
-        {showRegister ? <Register /> : <SingUp closePopUp={closePopUp} />}
-        <ButtonAdd
-          handelClick={clickRegist}
-          typeBtn={'button'}
-          title={showRegister ? 'Войти' : 'Зарегестрироваться '}
-        />
+        {showRegister ? (
+          <Register errorMessage={errorMessage} renderError={renderError} closePopUp={closePopUp} />
+        ) : (
+          <SingUp renderError={renderError} errorMessage={errorMessage} closePopUp={closePopUp} />
+        )}
+        <div style={{ marginTop: '20px' }}>
+          <ButtonAdd
+            handelClick={clickRegist}
+            typeBtn={'button'}
+            title={showRegister ? 'Войти' : 'Зарегестрироваться '}
+          />
+        </div>
       </div>
     </div>
   );
