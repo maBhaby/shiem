@@ -1,0 +1,16 @@
+.acardion {
+  &Title {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 210%;
+    cursor: pointer;
+    user-select: none;
+  }
+  &List {
+    padding-left: 10px;
+  }
+  &BtnSort {
+    font-size: 13px;
+    line-height: 200%;
+  }
+}

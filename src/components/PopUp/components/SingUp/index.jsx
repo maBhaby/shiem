@@ -1,4 +1,5 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../../firebase';
 
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
@@ -11,7 +12,6 @@ import style from './SingUp.module.scss';
 
 const SingUp = ({ closePopUp, renderError, errorMessage }) => {
   const handelLogin = (email, password) => {
-    const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         console.log('успех');
@@ -30,12 +30,8 @@ const SingUp = ({ closePopUp, renderError, errorMessage }) => {
   return (
     <Formik
       initialValues={{
-        userName: '',
-        lastName: '',
-        city: '',
         email: '',
         password: '',
-        repeatPassword: '',
       }}
       validationSchema={validate}>
       {(formik) => (
@@ -50,7 +46,7 @@ const SingUp = ({ closePopUp, renderError, errorMessage }) => {
             <div style={{ marginTop: '30px' }}>
               <ButtonAdd
                 handelClick={() =>
-                  formik.errors
+                  formik.errors.email || formik.errors.password
                     ? renderError('Ошибка пользователя')
                     : handelLogin(formik.values.email, formik.values.password)
                 }

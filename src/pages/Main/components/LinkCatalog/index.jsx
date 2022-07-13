@@ -24,7 +24,7 @@ const LinkCatalog = () => {
           alt="man"
         />
         <div className={style.btnWrap}>
-          <ButtonLink title={'Перейти в каталог'} />
+          <ButtonLink link={'catalog'} title={'Перейти в каталог'} />
         </div>
         <h3 className={style.linkCatalogTitle}>Мужчины</h3>
       </div>

@@ -12,7 +12,7 @@ const SaleMobile = () => {
       />
       <div className={style.SaleMobileWrap}>
         <h2 className={style.SaleMobileTitle}>Скидка 10% на первый заказ в приложении</h2>
-        <ButtonLink title={'Подробнее'}></ButtonLink>
+        <ButtonLink link={'catalog'} title={'Подробнее'}></ButtonLink>
       </div>
     </section>
   );

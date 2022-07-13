@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
-import { getAuth } from 'firebase/auth';
+import { auth } from '../../firebase';
 
 import logo from '../../assets/img/Header/Logo.svg';
 import cart from '../../assets/img/Header/Cart.svg';
@@ -8,14 +7,19 @@ import favorite from '../../assets/img/Header/favorite.svg';
 import search from '../../assets/img/Header/search.svg';
 import userLogo from '../../assets/img/Header/user.svg';
 import style from './header.module.scss';
-import { useEffect } from 'react';
+import { useState } from 'react';
 
 const HeaderBottom = ({ setActivePopUp, activePopUp }) => {
-  const auth = getAuth();
+  const [activeFavorite, setActiveFavorite] = useState(false);
+
   const user = auth.currentUser;
 
   const renderPopUp = () => {
     setActivePopUp(true);
+  };
+
+  const checkAuth = () => {
+    user ? setActiveFavorite(true) : setActivePopUp(true);
   };
 
   return (
@@ -80,7 +84,10 @@ const HeaderBottom = ({ setActivePopUp, activePopUp }) => {
             )}
           </li>
           <li>
-            <Link className={['link-reset', style.navListBottomlink].join(' ')} to="/favorite">
+            <Link
+              onClick={checkAuth}
+              className={['link-reset', style.navListBottomlink].join(' ')}
+              to={activeFavorite && '/favorite'}>
               <img width={20} height={20} src={favorite} alt="icon" />
               Избранное
             </Link>

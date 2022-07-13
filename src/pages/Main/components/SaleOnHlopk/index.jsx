@@ -12,7 +12,7 @@ const SaleOnHlopk = () => {
       />
       <div className={style.SaleOnHlopkWrap}>
         <h2 className={style.SaleOnHlopkTitle}>Скидки на пошив из хлопка</h2>
-        <ButtonLink title={'Выбрать и купить'}></ButtonLink>
+        <ButtonLink link={'catalog'} title={'Выбрать и купить'}></ButtonLink>
       </div>
     </section>
   );

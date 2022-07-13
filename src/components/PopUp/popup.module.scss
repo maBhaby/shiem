@@ -24,4 +24,18 @@
       right: 22px;
     }
   }
+  &Description {
+    font-size: 13px;
+    line-height: 140%;
+    text-align: center;
+
+    color: #757575;
+    margin-top: 20px;
+  }
+  &SocialWrap {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }

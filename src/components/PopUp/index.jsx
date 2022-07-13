@@ -1,14 +1,42 @@
 import { useState } from 'react';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { auth } from '../../firebase';
 
 import SingUp from './components/SingUp';
 import Register from './components/Register';
-import Test from './components/Register';
 import ButtonAdd from '../Button/ButtonAdd';
 import style from './popup.module.scss';
+import { SocialReg } from '../SocialRegButton';
 
 const Popup = ({ setActivePopUp }) => {
   const [showRegister, setShowRegister] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const googleReg = () => {
+    const provider = new GoogleAuthProvider();
+    console.log(provider);
+    console.log(auth);
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
+        // const token = credential.accessToken;
+        // // The signed-in user info.
+        // const user = result.user;
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
 
   const renderError = (message) => {
     setErrorMessage(message);
@@ -50,6 +78,15 @@ const Popup = ({ setActivePopUp }) => {
             title={showRegister ? 'Войти' : 'Зарегестрироваться '}
           />
         </div>
+        {showRegister ? null : (
+          <>
+            <p className={style.poupUpDescription}>Войти через соц.сети</p>
+            <div className={style.poupUpSocialWrap}>
+              <SocialReg handelClick={googleReg} title={'Google'} />
+              <SocialReg title={'Facebook'} />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

@@ -1,9 +1,10 @@
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../../../firebase';
+import { auth } from '../../../../firebase';
 
 import ButtonAdd from '../../../Button/ButtonAdd';
 import Castom from '../../../Input/Castom';
@@ -31,12 +32,11 @@ const Register = ({ closePopUp, renderError, errorMessage }) => {
   };
 
   const handelClickRegister = (email, password, city, lastName, userName) => {
-    const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         writeToStore(userCredential.user.uid, email, lastName, city, userName);
       })
-      .catch((error) => {
+      .catch(() => {
         renderError('Ошибка сервера');
       });
   };
@@ -65,7 +65,6 @@ const Register = ({ closePopUp, renderError, errorMessage }) => {
       validationSchema={validate}>
       {(formik) => (
         <>
-          {console.log(formik.values)}
           <h2 className="visually-hidden">Окно регистрации</h2>
           <h3 className={style.registerTitle}>
             {errorMessage !== '' ? errorMessage : 'Регистрация'}
@@ -80,7 +79,12 @@ const Register = ({ closePopUp, renderError, errorMessage }) => {
             <div style={{ marginTop: '30px' }}>
               <ButtonAdd
                 handelClick={() =>
-                  formik.errors
+                  formik.errors.email ||
+                  formik.errors.password ||
+                  formik.errors.city ||
+                  formik.errors.lastName ||
+                  formik.errors.userName ||
+                  formik.errors.repeatPassword
                     ? renderError('Ошибка пользователя')
                     : handelClickRegister(
                         formik.values.email,

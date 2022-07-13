@@ -88,7 +88,6 @@ const Advantages = () => {
               stroke="#222222"
             />
           </svg>
-
           <h3 className={style.advantagesTitle}>Удобные способы оплаты</h3>
         </li>
       </ul>

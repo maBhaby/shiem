@@ -14,7 +14,7 @@ const SaleLoyalty = () => {
         <h2 className={style.SaleLoyaltyTitle}>
           Cкидка 20% для новых участников программы лояльности
         </h2>
-        <ButtonLink title={'Подробнее'}></ButtonLink>
+        <ButtonLink link={'catalog'} title={'Подробнее'}></ButtonLink>
       </div>
     </section>
   );

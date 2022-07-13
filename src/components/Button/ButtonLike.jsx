@@ -2,12 +2,7 @@ import { useState } from 'react';
 
 import style from './style.module.scss';
 
-const ButtonLike = ({ title }) => {
-  const [favorite, setFavorite] = useState(false);
-
-  const handelClick = () => {
-    setFavorite((prev) => !prev);
-  };
+const ButtonLike = ({ handelClick, favorite }) => {
   return (
     <button href="#a" onClick={handelClick} className={['btn-reset', style.btnLike].join(' ')}>
       <svg

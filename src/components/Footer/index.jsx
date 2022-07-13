@@ -20,7 +20,7 @@ const Footer = () => {
   ];
   return (
     <footer className={style.footer}>
-      <div className={['container', style.footerContainer].join(' ')}>
+      <div className={[style.footerContainer].join(' ')}>
         <img width={141} height={48} src={require('../../assets/img/Header/Logo.svg')} alt="logo" />
         <List title={'Каталог'} item={catalog}></List>
         <List title={'Компании'} item={company}></List>

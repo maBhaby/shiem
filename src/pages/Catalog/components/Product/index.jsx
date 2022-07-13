@@ -1,11 +1,20 @@
 import { useState } from 'react';
+import { collection, addDoc } from 'firebase/firestore';
+import { auth } from '../../../../firebase';
 
 import style from './product.module.scss';
 import ButtonLike from '../../../../components/Button/ButtonLike';
 
 const Product = ({ item }) => {
   const [sale, setSale] = useState(false);
+  const [favorite, setFavorite] = useState(false);
 
+  const addToFavorite = (el) => {
+    setFavorite(!favorite);
+    console.log(el);
+    const userAuthId = auth.currentUser.uid;
+    console.log(userAuthId);
+  };
   return (
     <ul className={style.productList}>
       {item.map((el) => {
@@ -17,7 +26,7 @@ const Product = ({ item }) => {
                 src={require('../../../../assets/img/Product/baba.jpg')}
                 alt="clother"
               />
-              <p className={sale && style.line}>
+              <p className={style.line}>
                 от {el.price} руб.
                 {el.salePrice ? (
                   <span className={style.productSale}>от {el.salePrice} руб.</span>
@@ -25,7 +34,7 @@ const Product = ({ item }) => {
               </p>
               <figcaption>{el.title}</figcaption>
             </figure>
-            <ButtonLike />
+            <ButtonLike favorite={favorite} handelClick={() => addToFavorite(el)} />
           </li>
         );
       })}

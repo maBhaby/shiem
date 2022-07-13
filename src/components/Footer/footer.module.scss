@@ -1,8 +1,11 @@
 .footer {
-  flex: 0 0 auto;
   margin-top: 70px;
   border-top: 1px solid #e5e5e5;
   &Container {
+    max-width: 1490px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
     margin-top: 42px;
     display: grid;
     grid-template-columns: repeat(7, minmax(auto, 308px));
