@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ErrorMessage, useField } from 'formik';
 import style from '../input.module.scss';
 
-const Castom = ({ labelName, ...props }) => {
+const Castom = ({ labelName, required = false, ...props }) => {
   const [activeLabelName, setActiveLabelName] = useState(false);
   const [field, meta] = useField(props);
 
@@ -12,10 +12,12 @@ const Castom = ({ labelName, ...props }) => {
 
   return (
     <label>
-      <p className={style.inputName}>
-        {labelName}
-        <span className={style.inputNameRequaer}>*</span>
-      </p>
+      {required && (
+        <p className={style.inputName}>
+          {labelName}
+          <span className={style.inputNameRequaer}>*</span>
+        </p>
+      )}
       <div className={style.inputWrap}>
         <input
           className={[style.input, meta.error && meta.touched && style.inputError].join(' ')}

@@ -1,13 +1,27 @@
-import { useState } from 'react';
-import { collection, addDoc } from 'firebase/firestore';
+import { useState, useEffect } from 'react';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { auth } from '../../../../firebase';
+import { db } from '../../../../firebase';
 
 import style from './product.module.scss';
 import ButtonLike from '../../../../components/Button/ButtonLike';
 
 const Product = ({ item }) => {
-  const [sale, setSale] = useState(false);
   const [favorite, setFavorite] = useState(false);
+  const userFireStoreID = null;
+
+  // const addToFavoriteDB = () => {
+  //   try {
+  //     const docRef = await addDoc(collection(db, "users"), {
+  //       first: "Ada",
+  //       last: "Lovelace",
+  //       born: 1815
+  //     });
+  //     console.log("Document written with ID: ", docRef.id);
+  //   } catch (e) {
+  //     console.error("Error adding document: ", e);
+  //   }
+  // }
 
   const addToFavorite = (el) => {
     setFavorite(!favorite);
@@ -15,6 +29,23 @@ const Product = ({ item }) => {
     const userAuthId = auth.currentUser.uid;
     console.log(userAuthId);
   };
+
+  const checkUserData = async () => {
+    const firebaseUserData = await getDocs(collection(db, 'users'));
+    const userAuthId = auth.currentUser;
+
+    firebaseUserData.forEach((doc) => {
+      const docUserData = doc.data();
+      if (docUserData.id === userAuthId.uid) {
+        console.log(docUserData, userAuthId.uid);
+      }
+    });
+  };
+
+  useEffect(() => {
+    checkUserData();
+  }, []);
+
   return (
     <ul className={style.productList}>
       {item.map((el) => {

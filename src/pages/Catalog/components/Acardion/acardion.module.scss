@@ -5,6 +5,12 @@
     line-height: 210%;
     cursor: pointer;
     user-select: none;
+    position: relative;
+    &Arrow {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
   &List {
     padding-left: 10px;

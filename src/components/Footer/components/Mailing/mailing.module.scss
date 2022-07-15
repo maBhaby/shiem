@@ -5,4 +5,28 @@
     font-size: 13px;
     line-height: 16px;
   }
+  &Wrap {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 14px;
+  }
+  &Btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d9d9d9;
+    &Active {
+      background: #222;
+    }
+  }
+  &Text {
+    max-width: 308px;
+    font-size: 12px;
+    line-height: 140%;
+    color: #757575;
+    margin-top: 14px;
+  }
 }

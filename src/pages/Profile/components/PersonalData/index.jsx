@@ -1,7 +1,7 @@
 import style from './personaldata.module.scss';
 
 const PersonalData = ({ userDate }) => {
-  const { city, email, gender, lastName, userName } = userDate;
+  const { city, email, lastName, userName } = userDate;
 
   console.log(userDate);
   return (
@@ -25,10 +25,6 @@ const PersonalData = ({ userDate }) => {
           <li className={style.personalDataItem}>
             <h3 className={style.personalDataItemLogo}>Город</h3>
             <p className={style.personalDataItemText}>{city}</p>
-          </li>
-          <li className={style.personalDataItem}>
-            <h3 className={style.personalDataItemLogo}>Гендер</h3>
-            <p className={style.personalDataItemText}>{gender}</p>
           </li>
         </ul>
       </div>

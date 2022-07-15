@@ -3,11 +3,13 @@ import { getAuth, signOut } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase';
+import { auth } from '../../firebase';
 
 import style from './profile.module.scss';
 import Circle from '../../components/Loading/Circle';
 import PersonalData from './components/PersonalData';
 import ProfileMenu from './components/ProfileMenu';
+import BreadCrumbs from '../../components/BreadСrumbs';
 
 const Profile = () => {
   const [loading, setLoading] = useState(true);
@@ -16,7 +18,6 @@ const Profile = () => {
 
   const checkUserData = async () => {
     const firebaseUserData = await getDocs(collection(db, 'users'));
-    const auth = getAuth();
     const userAuthId = auth.currentUser;
 
     firebaseUserData.forEach((doc) => {
@@ -41,9 +42,7 @@ const Profile = () => {
         navigate('/');
         window.location.reload();
       })
-      .catch((error) => {
-        // An error happened.
-      });
+      .catch((error) => {});
   };
 
   return (
@@ -52,6 +51,7 @@ const Profile = () => {
         <Circle />
       ) : (
         <div className="container">
+          <BreadCrumbs way={['Главная', 'Избранное']}></BreadCrumbs>
           <h1 className="visually-hidden">Личный кабинет</h1>
           <div className={style.profileWrap}>
             <ProfileMenu clickOnExit={handelClick} />

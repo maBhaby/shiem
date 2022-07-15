@@ -13,6 +13,37 @@ const Acardion = ({ renderProductCard }) => {
       <li className={style.acardionItem}>
         <h3 data-index="0" onClick={openAcardion} className={style.acardionTitle}>
           Одежда
+          <span className={style.acardionTitleArrow}>
+            {activeItem === 0 ? (
+              <svg
+                width="12"
+                height="7"
+                viewBox="0 0 12 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 6L6 1L1 6"
+                  stroke="#222222"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            ) : (
+              <svg
+                width="12"
+                height="7"
+                viewBox="0 0 12 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 1L6 6L1 1"
+                  stroke="#222222"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            )}
+          </span>
         </h3>
         {activeItem === 0 ? (
           <ul className={style.acardionList}>
@@ -43,6 +74,37 @@ const Acardion = ({ renderProductCard }) => {
       <li className={style.acardionItem}>
         <h3 onClick={openAcardion} data-index="1" className={style.acardionTitle}>
           Аксессуары
+          <span className={style.acardionTitleArrow}>
+            {activeItem === 1 ? (
+              <svg
+                width="12"
+                height="7"
+                viewBox="0 0 12 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 6L6 1L1 6"
+                  stroke="#222222"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            ) : (
+              <svg
+                width="12"
+                height="7"
+                viewBox="0 0 12 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 1L6 6L1 1"
+                  stroke="#222222"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            )}
+          </span>
         </h3>
         {activeItem === 1 ? (
           <ul className={style.acardionList}>

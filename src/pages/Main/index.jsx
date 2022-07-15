@@ -36,7 +36,6 @@ const Main = () => {
 
   return (
     <div className="container">
-      <h2>ВАЛИДАЦИЯ И ПОЛНАЯ ФОРМА</h2>
       <Banner></Banner>
       <SliderLoop title={'Актуальное'} slide={[...actual]}></SliderLoop>
       <SaleOnHlopk></SaleOnHlopk>

@@ -12,8 +12,8 @@ import Password from '../../../Input/Password';
 import style from './register.module.scss';
 
 const Register = ({ closePopUp, renderError, errorMessage }) => {
-  const writeToStore = async (userId, email, lastName, city, userName) => {
-    console.log(city, lastName, email, userId, userName);
+  const writeToStore = async (userId, email, lastName, city, userName, favorite) => {
+    console.log(city, lastName, email, userId, userName, favorite);
 
     const docRef = await addDoc(collection(db, 'users'), {
       id: userId,
@@ -21,6 +21,7 @@ const Register = ({ closePopUp, renderError, errorMessage }) => {
       lastName: lastName,
       city: city,
       userName: userName,
+      favorite: favorite,
     })
       .then((docRef) => {
         console.log('Document written with ID: ', docRef.id);
@@ -31,10 +32,10 @@ const Register = ({ closePopUp, renderError, errorMessage }) => {
       });
   };
 
-  const handelClickRegister = (email, password, city, lastName, userName) => {
+  const handelClickRegister = (email, password, city, lastName, userName, favorite) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        writeToStore(userCredential.user.uid, email, lastName, city, userName);
+        writeToStore(userCredential.user.uid, email, lastName, city, userName, favorite);
       })
       .catch(() => {
         renderError('Ошибка сервера');
@@ -61,6 +62,7 @@ const Register = ({ closePopUp, renderError, errorMessage }) => {
         email: '',
         password: '',
         repeatPassword: '',
+        favorite: [],
       }}
       validationSchema={validate}>
       {(formik) => (
@@ -70,10 +72,10 @@ const Register = ({ closePopUp, renderError, errorMessage }) => {
             {errorMessage !== '' ? errorMessage : 'Регистрация'}
           </h3>
           <Form>
-            <Castom labelName={'Имя'} type={'text'} name={'userName'} />
-            <Castom labelName={'Фамилия'} type={'text'} name={'lastName'} />
-            <Castom labelName={'Город'} type={'text'} name={'city'} />
-            <Castom labelName={'E-mail'} type={'text'} name={'email'} />
+            <Castom required={true} labelName={'Имя'} type={'text'} name={'userName'} />
+            <Castom required={true} labelName={'Фамилия'} type={'text'} name={'lastName'} />
+            <Castom required={true} labelName={'Город'} type={'text'} name={'city'} />
+            <Castom required={true} labelName={'E-mail'} type={'text'} name={'email'} />
             <Password labelName={'Пароль'} type={'password'} name={'password'} />
             <Password labelName={'Потвердите пароль'} type={'password'} name={'repeatPassword'} />
             <div style={{ marginTop: '30px' }}>
@@ -92,6 +94,7 @@ const Register = ({ closePopUp, renderError, errorMessage }) => {
                         formik.values.city,
                         formik.values.lastName,
                         formik.values.userName,
+                        formik.values.favorite,
                       )
                 }
                 active={true}

@@ -41,7 +41,7 @@ const SingUp = ({ closePopUp, renderError, errorMessage }) => {
           <h3 className={style.singUpTitle}>{errorMessage !== '' ? errorMessage : 'Войти'}</h3>
           <Tabs />
           <Form>
-            <Castom labelName={'E-mail'} type={'text'} name={'email'} />
+            <Castom required={true} labelName={'E-mail'} type={'text'} name={'email'} />
             <Password labelName={'Пароль'} type={'password'} name={'password'} />
             <div style={{ marginTop: '30px' }}>
               <ButtonAdd

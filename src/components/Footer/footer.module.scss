@@ -7,8 +7,28 @@
     margin: 0 auto;
     padding: 0 15px;
     margin-top: 42px;
-    display: grid;
-    grid-template-columns: repeat(7, minmax(auto, 308px));
-    grid-gap: 78px;
+  }
+  &Wrap {
+    &Top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 90px;
+    }
+    &Bottom {
+      display: flex;
+      gap: 25px;
+      margin-bottom: 30px;
+      &Line {
+        position: relative;
+        &::before {
+          position: absolute;
+          content: '';
+          width: 100%;
+          bottom: 0;
+          background: #222;
+          height: 1px;
+        }
+      }
+    }
   }
 }

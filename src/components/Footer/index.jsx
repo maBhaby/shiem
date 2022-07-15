@@ -1,6 +1,8 @@
 import style from './footer.module.scss';
 import List from './components/List';
 import Mailing from './components/Mailing';
+import ForMobile from './components/ForMobile';
+import logo from '../../assets/img/Header/Logo.svg';
 
 const Footer = () => {
   const catalog = [
@@ -20,13 +22,20 @@ const Footer = () => {
   ];
   return (
     <footer className={style.footer}>
-      <div className={[style.footerContainer].join(' ')}>
-        <img width={141} height={48} src={require('../../assets/img/Header/Logo.svg')} alt="logo" />
-        <List title={'Каталог'} item={catalog}></List>
-        <List title={'Компании'} item={company}></List>
-        <List title={'Связаться с нами'} item={sviaz}></List>
-        <List title={'Соц. Сети'} item={social}></List>
-        <Mailing></Mailing>
+      <div className={style.footerContainer}>
+        <div className={style.footerWrapTop}>
+          <img width={141} height={48} src={logo} alt="logo" />
+          <List title={'Каталог'} item={catalog}></List>
+          <List title={'Компании'} item={company}></List>
+          <List title={'Связаться с нами'} item={sviaz}></List>
+          <List title={'Соц. Сети'} item={social}></List>
+          <Mailing></Mailing>
+          <ForMobile></ForMobile>
+        </div>
+        <ul className={style.footerWrapBottom}>
+          <li>© Магазин одежды ШЬЁМ! 2021 </li>
+          <li className={style.footerWrapBottomLine}>Политикой конфиденциальности</li>
+        </ul>
       </div>
     </footer>
   );

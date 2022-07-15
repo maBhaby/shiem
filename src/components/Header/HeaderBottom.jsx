@@ -30,27 +30,33 @@ const HeaderBottom = ({ setActivePopUp, activePopUp }) => {
       <nav className={style.headerBottomNavClother}>
         <ul className={[style.navList, style.navListBottom].join(' ')}>
           <li>
-            <Link to="catalog" className={['link-reset']} href="#sd">
+            <Link
+              to="catalog"
+              className={['link-reset', style.navListBottomItem].join(' ')}
+              href="#sd">
               Женщины
             </Link>
           </li>
           <li>
-            <Link to="catalog" className={['link-reset']} href="#sd">
+            <Link
+              to="catalog"
+              className={['link-reset', style.navListBottomItem].join(' ')}
+              href="#sd">
               Мужчины
             </Link>
           </li>
           <li>
-            <a className={['link-reset']} href="#sd">
+            <a className={['link-reset', style.navListBottomItem].join(' ')} href="#sd">
               Бренды
             </a>
           </li>
           <li>
-            <a className={['link-reset']} href="#sd">
+            <a className={['link-reset', style.navListBottomItem].join(' ')} href="#sd">
               Новинки
             </a>
           </li>
           <li>
-            <a className={['link-reset']} href="#sd">
+            <a className={['link-reset', style.navListBottomItem].join(' ')} href="#sd">
               SALE
             </a>
           </li>
@@ -88,7 +94,7 @@ const HeaderBottom = ({ setActivePopUp, activePopUp }) => {
               onClick={checkAuth}
               className={['link-reset', style.navListBottomlink].join(' ')}
               to={activeFavorite && '/favorite'}>
-              <img width={20} height={20} src={favorite} alt="icon" />
+              <img width={18} height={18} src={favorite} alt="icon" />
               Избранное
             </Link>
           </li>
