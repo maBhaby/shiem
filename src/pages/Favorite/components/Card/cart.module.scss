@@ -1,0 +1,26 @@
+.cart {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 15px;
+  &Btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #222;
+    width: 100%;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    height: 48px;
+    margin-top: 10px;
+  }
+  &Img {
+    margin-bottom: 10px;
+  }
+  &Price {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}

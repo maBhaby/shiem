@@ -34,12 +34,7 @@ export const Selector = ({ listMenu, title }) => {
             viewBox="0 0 12 7"
             fill="none"
             xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M11 1L6 6L1 1"
-              stroke="#222222"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+            <path d="M11 1L6 6L1 1" stroke="#222222" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         )}
       </div>

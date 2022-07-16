@@ -7,6 +7,7 @@ import Acardion from './components/Acardion';
 import BreadCrumbs from '../../components/BreadСrumbs';
 import Product from './components/Product';
 import Circle from '../../components/Loading/Circle';
+import Message from '../../components/Message';
 import { Selector } from '../../components/Selector';
 
 const Catalog = () => {
@@ -37,21 +38,24 @@ const Catalog = () => {
   return loading ? (
     <Circle></Circle>
   ) : (
-    <div className="container">
-      <BreadCrumbs way={['Главная', 'Женщины ', 'Платья и сарафаны']} />
-      <div className={style.catalogContainer}>
-        <Acardion renderProductCard={renderProductCard} />
-        <div className={style.catalogRightWrap}>
-          <h2 className={style.catalogTitle}>Женская одежда</h2>
-          <div className={style.catalogWrapSelector}>
-            {select.map((el, i) => (
-              <Selector key={i} title={el.title} listMenu={el.sort}></Selector>
-            ))}
+    <>
+      {/* <Message title={'Авторизуйтесь'}></Message> */}
+      <div className="container">
+        <BreadCrumbs way={['Главная', 'Женщины ', 'Платья и сарафаны']} />
+        <div className={style.catalogContainer}>
+          <Acardion renderProductCard={renderProductCard} />
+          <div className={style.catalogRightWrap}>
+            <h2 className={style.catalogTitle}>Женская одежда</h2>
+            <div className={style.catalogWrapSelector}>
+              {select.map((el, i) => (
+                <Selector key={i} title={el.title} listMenu={el.sort}></Selector>
+              ))}
+            </div>
+            <Product item={product}></Product>
           </div>
-          <Product item={product}></Product>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

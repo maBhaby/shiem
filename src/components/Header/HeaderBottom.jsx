@@ -56,7 +56,7 @@ const HeaderBottom = ({ setActivePopUp, activePopUp }) => {
             </a>
           </li>
           <li>
-            <a className={['link-reset', style.navListBottomItem].join(' ')} href="#sd">
+            <a className={['link-reset', style.navListBottomSpec].join(' ')} href="#sd">
               SALE
             </a>
           </li>

@@ -24,8 +24,8 @@ const Acardion = ({ renderProductCard }) => {
                 <path
                   d="M11 6L6 1L1 6"
                   stroke="#222222"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             ) : (
@@ -38,8 +38,8 @@ const Acardion = ({ renderProductCard }) => {
                 <path
                   d="M11 1L6 6L1 1"
                   stroke="#222222"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             )}
@@ -85,8 +85,8 @@ const Acardion = ({ renderProductCard }) => {
                 <path
                   d="M11 6L6 1L1 6"
                   stroke="#222222"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             ) : (
@@ -99,8 +99,8 @@ const Acardion = ({ renderProductCard }) => {
                 <path
                   d="M11 1L6 6L1 1"
                   stroke="#222222"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             )}

@@ -21,7 +21,6 @@ const Register = ({ closePopUp, renderError, errorMessage }) => {
       lastName: lastName,
       city: city,
       userName: userName,
-      favorite: favorite,
     })
       .then((docRef) => {
         console.log('Document written with ID: ', docRef.id);
@@ -62,7 +61,6 @@ const Register = ({ closePopUp, renderError, errorMessage }) => {
         email: '',
         password: '',
         repeatPassword: '',
-        favorite: [],
       }}
       validationSchema={validate}>
       {(formik) => (
