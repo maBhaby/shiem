@@ -36,7 +36,7 @@ const Product = ({ item }) => {
         const docUserData = doc.data();
         if (docUserData.id === userAuthId.uid) {
           userUrl = doc._key.path.segments[6]; // здесь я получить путь к моему документу в firestore, чтоб была возможность добавлять в фавориты
-          console.log(userUrl);
+          console.log(doc(db, 'users'));
         }
       });
     } else {
@@ -47,7 +47,7 @@ const Product = ({ item }) => {
   useEffect(() => {
     checkUserData();
     return () => {
-      addToFavoriteDB(userUrl);
+      addToFavoriteDB();
     };
   }, []);
 
@@ -57,12 +57,7 @@ const Product = ({ item }) => {
         return (
           <li key={el.id} className={style.productItem}>
             <figure>
-              <img
-                height={560}
-                width={390}
-                src={require('../../../../assets/img/Product/baba.jpg')}
-                alt="clother"
-              />
+              <img height={560} width={390} src={el.imageUrl} alt="clother" />
               <p className={style.bold}>
                 <span className={el.salePrice ? style.line : ''}>от {el.price} руб.</span>
                 {el.salePrice ? (

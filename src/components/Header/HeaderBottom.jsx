@@ -7,19 +7,22 @@ import favorite from '../../assets/img/Header/favorite.svg';
 import search from '../../assets/img/Header/search.svg';
 import userLogo from '../../assets/img/Header/user.svg';
 import style from './header.module.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const HeaderBottom = ({ setActivePopUp, activePopUp }) => {
   const [activeFavorite, setActiveFavorite] = useState(false);
+  const [activeUser, setActiveUser] = useState(false);
 
-  const user = auth.currentUser;
+  useEffect(() => {
+    setActiveUser(!!auth.currentUser);
+  }, [auth.currentUser]);
 
   const renderPopUp = () => {
     setActivePopUp(true);
   };
 
   const checkAuth = () => {
-    user ? setActiveFavorite(true) : setActivePopUp(true);
+    activeUser ? setActiveFavorite(true) : setActivePopUp(true);
   };
 
   return (
@@ -71,7 +74,7 @@ const HeaderBottom = ({ setActivePopUp, activePopUp }) => {
             </a>
           </li>
           <li>
-            {user ? (
+            {activeUser ? (
               <Link
                 to={'/profile'}
                 className={['link-reset', style.navListBottomlink].join(' ')}
