@@ -1,0 +1,20 @@
+.register {
+  &Title {
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 140%;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  &Form {
+    margin-bottom: 20px;
+  }
+  &Logo {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    &Requaer {
+      margin-left: 2px;
+      color: #ff0000;
+    }
+  }
+}

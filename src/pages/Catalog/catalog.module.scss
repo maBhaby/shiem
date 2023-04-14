@@ -1,0 +1,18 @@
+.catalog {
+  &Title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    margin-bottom: 15px;
+  }
+  &Container {
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+    grid-column-gap: 20px;
+  }
+  &Wrap {
+    &Selector {
+      margin-bottom: 25px;
+    }
+  }
+}

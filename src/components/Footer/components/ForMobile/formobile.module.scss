@@ -1,0 +1,13 @@
+.formobile {
+  &Title {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 15px;
+  }
+  &Item {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}

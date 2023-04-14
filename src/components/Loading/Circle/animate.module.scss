@@ -1,0 +1,10 @@
+.circle {
+  &Wrap {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex: 1 0 auto;
+    justify-content: center;
+    height: 55vh;
+  }
+}

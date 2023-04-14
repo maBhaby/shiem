@@ -1,0 +1,41 @@
+.poupUp {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background: #2222228a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  &Form {
+    margin-bottom: 20px;
+  }
+  &Wrap {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    background: #fff;
+    padding: 60px;
+  }
+  &Btn {
+    &Close {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+    }
+  }
+  &Description {
+    font-size: 13px;
+    line-height: 140%;
+    text-align: center;
+
+    color: #757575;
+    margin-top: 20px;
+  }
+  &SocialWrap {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
